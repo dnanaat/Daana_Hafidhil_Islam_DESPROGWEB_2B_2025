@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tugas 1 HTML</title>
+</head>
+<body>
+    <table border="1" height="100%" width="100%" cellpadding="10px" cellspacing="5px">
+        <tr>
+            <td colspan="3" align="center"><br><b>BIODATA MAHASISWA POLITEKNIK NEGERI MALANG</b><br><br></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center"><br>FOTO PROFIL SAYA<br><br> <img src="img/monyet.jpeg" class="img" width="300px"></td>
+        </tr>
+        <tr>
+            <td>NAMA LENGKAP</td>
+            <td> : </td>
+            <td><input type="text" name="nama" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>KELAS</td>
+            <td> : </td>
+            <td><input type="text" name="kelas" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>FAKULTAS</td>
+            <td> : </td>
+            <td><input type="text" name="fakultas" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>UNIVERSITAS</td>
+            <td> : </td>
+            <td><input type="text" name="univ" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>TANGGAL LAHIR</td>
+            <td> : </td>
+            <td><input type="date" name="tanggal" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>TEMPAT LAHIR</td>
+            <td> : </td>
+            <td><input type="text" name="ttd" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>JENIS KELAMIN</td>
+            <td> : </td>
+            <td>
+                <input type="radio" name="kelamin" size="150" value="r1">Laki-Laki
+                <input type="radio" name="kelamin1" size="150" value="r2">Perempuan
+            </td>
+        </tr>
+        <tr>
+            <td>AGAMA</td>
+            <td> : </td>
+            <td>
+                <select name="agama" size="1">
+                    <option value="IS">Islam</option>
+                    <option value="KR">Kristen</option>
+                    <option value="HI">Hindu</option></td>
+                </select>
+        </tr>
+        <tr>
+            <td>GOLONGAN DARAH</td>
+            <td> : </td>
+            <td>
+                <input type="radio" name="goldar" size="150" value="r1">O <br>
+                <input type="radio" name="goldar1" size="150" value="r2">A <br>
+                <input type="radio" name="goldar2" size="150" value="r2">B <br>
+                <input type="radio" name="goldar3" size="150" value="r2">AB <br>
+            </td>
+        </tr>
+        <tr>
+            <td>ALAMAT</td>
+            <td> : </td>
+            <td><textarea name="alamat" id="" rows="5" cols="50"></textarea></td>
+        </tr>
+        <tr>
+            <td>KOTA</td>
+            <td> : </td>
+            <td><input type="text" name="kota" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>PROVINSI</td>
+            <td> : </td>
+            <td><input type="text" name="prov" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>KEWARGANEGARAAN</td>
+            <td> : </td>
+            <td><input type="text" name="kewarga" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td>NO. TELEPON</td>
+            <td> : </td>
+            <td><input type="number" name="notelf" size="150" value=""></td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center"><input type="button" name="button" value="Tampilkan" class="btn"></td>
+        </tr>
+    </table>
+</body>
+<style>
+    .img{
+        border-radius: 50%;
+    }
+
+    .btn{
+        height: 50px;
+        width: 100px;
+    }
+</style>
+</html>
