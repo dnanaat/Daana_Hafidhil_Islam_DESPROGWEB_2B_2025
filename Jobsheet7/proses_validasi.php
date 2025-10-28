@@ -20,8 +20,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validasi password
     if (empty($password)) {
         $errors[] = "Password harus diisi!";
-    } elseif (strlen($password) < 8) {
-        $errors[] = "Password harus terdiri dari minimal 8 karakter!";
     }
 
     // Jika ada kesalahan validasi
