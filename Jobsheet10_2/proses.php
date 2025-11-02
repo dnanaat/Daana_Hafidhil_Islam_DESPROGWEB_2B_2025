@@ -11,14 +11,13 @@ if ($aksi == 'tambah') {
     $query = "INSERT INTO anggota (nama, jenis_kelamin, alamat, no_telp) 
               VALUES ('$nama', '$jenis_kelamin', '$alamat', '$no_telp')";
 
-    if (pg_query($conn, $query)) {
+    if (mysqli_query($conn, $query)) {
         header("Location: index.php");
         exit;
     } else {
-        echo "Gagal menambahkan data: " . pg_result_error($conn);
+        echo "Gagal menambahkan data: " . mysqli_error($conn);
     }
-}
-elseif ($aksi == 'ubah') {
+} else if ($aksi == 'ubah') {
     if (isset($_POST['id'])) {
         $id = $_POST['id'];
 
@@ -29,27 +28,26 @@ elseif ($aksi == 'ubah') {
                       no_telp='$no_telp' 
                   WHERE id=$id";
 
-        if (pg_query($conn, $query)) {
+        if (mysqli_query($conn, $query)) {
             header("Location: index.php");
             exit;
         } else {
-            echo "Gagal mengupdate data: " . pg_result_error($conn);
+            echo "Gagal mengupdate data: " . mysqli_error($conn);
         }
     } else {
         echo "ID tidak valid.";
     }
-}
-elseif ($aksi == 'hapus') {
+} elseif ($aksi == 'hapus') {
     if (isset($_GET['id'])) {
         $id = $_GET['id'];
 
         $query = "DELETE FROM anggota WHERE id = $id";
 
-        if (pg_query($conn, $query)) {
+        if (mysqli_query($conn, $query)) {
             header("Location: index.php");
             exit;
         } else {
-            echo "Gagal menghapus data: " . pg_result_error($conn);
+            echo "Gagal menghapus data: " . mysqli_error($conn);
         }
     } else {
         echo "ID tidak valid.";
@@ -58,6 +56,5 @@ elseif ($aksi == 'hapus') {
     header("Location: index.php");
 }
 
-pg_close($conn);
-
+mysqli_close($conn);
 ?>

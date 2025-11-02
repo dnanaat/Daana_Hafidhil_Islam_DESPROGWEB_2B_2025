@@ -9,21 +9,19 @@ $jenis_kelamin = stripslashes(strip_tags(htmlspecialchars($_POST['jenis_kelamin'
 $alamat = stripslashes(strip_tags(htmlspecialchars($_POST['alamat'], ENT_QUOTES)));
 $no_telp = stripslashes(strip_tags(htmlspecialchars($_POST['no_telp'], ENT_QUOTES)));
 
-if ($id == "") {
-    // INSERT data baru
-    $query = "INSERT INTO anggota (nama, jenis_kelamin, alamat, no_telp) VALUES ($1, $2, $3, $4)";
-    $result = pg_query_params($conn, $query, array($nama, $jenis_kelamin, $alamat, $no_telp));
+if($id == "") {
+    $query = "INSERT INTO anggota (nama, jenis_kelamin, alamat, no_telp) VALUES (?, ?, ?, ?)";
+    $sql = $db1->prepare($query);
+    $sql->bind_param("ssss", $nama, $jenis_kelamin, $alamat, $no_telp);
+    $sql->execute();
 } else {
-    // UPDATE data berdasarkan ID
-    $query = "UPDATE anggota SET nama = $1, jenis_kelamin = $2, alamat = $3, no_telp = $4 WHERE id = $5";
-    $result = pg_query_params($conn, $query, array($nama, $jenis_kelamin, $alamat, $no_telp, $id));
-}
+    $query = "UPDATE anggota SET nama = ?, jenis_kelamin = ?, alamat = ?, no_telp = ? WHERE id = ?";
+    $sql = $db1->prepare($query);
+    $sql->bind_param("ssssi", $nama, $jenis_kelamin, $alamat, $no_telp, $id);
+    $sql->execute();
+}    
 
-if ($result) {
-    echo json_encode(['success' => 'Sukses']);
-} else {
-    echo json_encode(['error' => 'Gagal menyimpan data']);
-}
+echo json_encode(['success' => 'Sukses']);
 
-pg_close($conn);
+$db1->close();
 ?>

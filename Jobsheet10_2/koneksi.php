@@ -1,14 +1,9 @@
 <?php
 define('HOST', 'localhost');
-define('PORT', '5432');
-define('DBNAME', 'praktikumdb');
-define('USER', 'postgres');
-define('PASS', '12345678');
+define('USER', 'root');
+define('PASS', '');
+define('DB1', 'prakwebdb');
 
 // Buat koneksinya
-$conn = pg_connect("host=" . HOST . " port=" . PORT . " dbname=" . DBNAME . " user=" . USER . " password=" . PASS);
-
-if (!$conn) {
-    die("Koneksi gagal: " . pg_last_error());
-}
+$db1 = new mysqli(HOST, USER, PASS, DB1);
 ?>

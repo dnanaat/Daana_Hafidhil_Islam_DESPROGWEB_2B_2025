@@ -5,22 +5,20 @@ include 'csrf.php';
 
 $id = $_POST['id'];
 
-$query = "SELECT * FROM anggota WHERE id = $1 ORDER BY id DESC";
-$result = pg_query_params($conn, $query, array($id));
+$query = "SELECT * FROM anggota WHERE id = ? ORDER BY id DESC";
+$sql = $db1->prepare($query);
+$sql->bind_param('i', $id);
+$sql->execute();
+$res1 = $sql->get_result();
 
-$h = array();
-
-if ($result && pg_num_rows($result) > 0) {
-    $row = pg_fetch_assoc($result);
-    $h['id'] = $row['id'];
-    $h['nama'] = $row['nama'];
-    $h['jenis_kelamin'] = $row['jenis_kelamin'];
-    $h['alamat'] = $row['alamat'];
-    $h['no_telp'] = $row['no_telp'];
-} else {
-    $h['error'] = "Data tidak ditemukan untuk ID: " . $id;
+while ($row = $res1->fetch_assoc()) {
+    $h['id'] = $row["id"];
+    $h['nama'] = $row["nama"];
+    $h['jenis_kelamin'] = $row["jenis_kelamin"];
+    $h['alamat'] = $row["alamat"];
+    $h['no_telp'] = $row["no_telp"];
 }
-header('Content-Type: application/json');
 echo json_encode($h);
-pg_close($conn);
+
+$db1->close();
 ?>
