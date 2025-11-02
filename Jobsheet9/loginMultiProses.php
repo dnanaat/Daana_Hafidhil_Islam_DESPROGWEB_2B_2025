@@ -4,9 +4,9 @@
     $username = $_POST['username'];
     $password = md5($_POST['password']);
 
-    $query = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = pg_query($conn, $query);
-    $row = pg_fetch_assoc($result);
+    $query = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
 
     if($row){
         if($row['level'] == 1){

@@ -5,12 +5,12 @@ $username = $_POST['username'];
 $password = md5($_POST['password']); 
 
 $query = 'SELECT * FROM users WHERE username=$1 AND password=$2';
-$result = pg_query_params($conn, $query, [$username, $password]);
+$result = mysqli_query($conn, $query);
 
 if (!$result) {
-    echo "Query gagal: " . pg_last_error($conn);
+    echo "Query gagal: " . mysqli_error($conn);
 } else {
-    if (pg_num_rows($result) > 0) {
+    if (mysqli_num_rows($result) > 0) {
         echo "Anda berhasil login. Silakan menuju ";
         echo '<a href="homeAdmin.html">Halaman HOME</a>';
     } else {

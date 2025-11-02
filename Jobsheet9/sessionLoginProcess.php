@@ -4,9 +4,9 @@
     $username = $_POST['username'];
     $password = md5($_POST['password']);
 
-    $psg = "SELECT * FROM users WHERE username='$username' AND password='$password'";
-    $result = pg_query($conn, $psg);
-    $cek = pg_num_rows($result);
+    $sql = "SELECT * FROM user WHERE username='$username' AND password='$password'";
+    $result = mysqli_query($conn, $sql);
+    $cek = mysqli_num_rows($result);
 
     if($cek > 0){
         session_start();
@@ -21,6 +21,6 @@
         Anda gagal login. Silahkan coba lagi di 
         <a href="sessionLoginForm.html">Halaman Login</a>.
         <?php
-        echo pg_last_error($conn);
+        echo mysqli_error($conn);
     }
 ?>
